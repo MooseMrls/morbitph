@@ -24,6 +24,7 @@ import logoSwift from "./images/logo/swift.png";
 import logoCeap from "./images/logo/CEAPNCR LOGO.png";
 import logoMhdc from "./images/logo/mhdc.jpg";
 import logoWeather from "./images/logo/weather.jpg";
+import meImg from "./images/me.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,8 +59,8 @@ const SKILLS = ["React", "JavaScript", "Node.js", "TypeScript", "HTML/CSS", "Flu
 const SERVICES = [
   { label: "Custom System Development", desc: "We build tailored systems from scratch — no templates, no shortcuts. Built around your unique business processes.", accent: "#7B73E4", icon: "⌘", video: "https://cdn.pixabay.com/video/2023/07/21/172655-847860558_large.mp4" },
   { label: "Admin Dashboards & CRM", desc: "Gain full control over your business with powerful dashboards, customer data analytics, and permission-based access.", accent: "#4CC9F0", icon: "◈", video: "https://cdn.pixabay.com/video/2021/04/05/69999-533348151_large.mp4" },
-  { label: "Mobile & Web App Development", desc: "We design and develop fast, scalable apps for iOS, Android, and web — fully custom, user-friendly, and built to grow.", accent: "#00C9A7", icon: "⊡", video: "https://cdn.pixabay.com/video/2023/07/31/174003-850361299_large.mp4" },
-  { label: "E-Commerce & Online Stores", desc: "Launch fully functional e-commerce stores with payment gateways, product management, order tracking, and upsell tools.", accent: "#FF6B35", icon: "⊕", video: "https://cdn.pixabay.com/video/2020/06/27/43304-435970695_large.mp4" },
+  { label: "Mobile & Web App Development", desc: "We design and develop fast, scalable apps for both mobile and web — fully custom, user-friendly, and built to grow.", accent: "#00C9A7", icon: "⊡", video: "https://cdn.pixabay.com/video/2023/07/31/174003-850361299_large.mp4" },
+  { label: "E-Commerce & Online Stores", desc: "Launch fully functional e-commerce stores with product management, order tracking, and upsell tools.", accent: "#FF6B35", icon: "⊕", video: "https://cdn.pixabay.com/video/2020/06/27/43304-435970695_large.mp4" },
 ];
 
 const PROCESS_DATA = [
@@ -553,45 +554,75 @@ function Clients() {
 }
 
 function Team() {
-  useEffect(() => {
-    gsap.fromTo(".team-card", { opacity: 0, y: 36 }, {
-      opacity: 1, y: 0, duration: 0.65, stagger: 0.1,
-      scrollTrigger: { trigger: ".team-grid", start: "top 82%" },
-    });
-  }, []);
+  const [index, setIndex] = useState(0);
+
+  const next = () => setIndex((prev) => (prev + 1) % TEAM.length);
+  const prev = () => setIndex((prev) => (prev - 1 + TEAM.length) % TEAM.length);
+
+  const getSlideClass = (i) => {
+    if (i === index) return "active";
+    if (i === index - 1 || (index === 0 && i === TEAM.length - 1)) return "prev";
+    if (i === index + 1 || (index === TEAM.length - 1 && i === 0)) return "next";
+    return "hidden";
+  };
 
   return (
     <section className="section team-section" id="team">
-      <div className="container">
-        <div className="section-head center-head">
-          <span className="s-label">The People</span>
-          <h2 className="s-title">Meet Our <em>Team</em></h2>
-          <p className="s-sub">A small, focused team of engineers and designers dedicated to building systems that matter.</p>
+      <div className="container" style={{ maxWidth: 1200 }}>
+        <div className="section-head center-head" style={{ marginBottom: 40 }}>
+          <span className="s-label" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+            {/* <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> */}
+            THE PEOPLE
+          </span>
+          <h2 className="s-title">The Morbit <em>Team</em></h2>
         </div>
-        <div className="team-grid">
-          {TEAM.map((m) => (
-            <div key={m.name} className="team-card">
-              <div className="team-avatar-wrap">
-                <div className="team-avatar-placeholder" style={{ background: m.color + "18", color: m.color }}>{m.initial}</div>
-              </div>
-              <div className="team-info">
-                <h3 className="team-name">{m.name}</h3>
-                <span className="team-role">{m.role}</span>
-              </div>
+
+        <div className="team-carousel-wrapper">
+          <button className="tc-arrow tc-prev" onClick={prev}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          
+          <div className="tc-viewport">
+            <div className="tc-track">
+              {TEAM.map((m, i) => (
+                <div key={m.name} className={`tc-slide ${getSlideClass(i)}`}>
+                  <img src={m.image} alt={m.name} className="tc-image" />
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          <button className="tc-arrow tc-next" onClick={next}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
         </div>
+
+        <div className="tc-info-section">
+          <h3 className="tc-name">{TEAM[index].name}</h3>
+          <p className="tc-desc">{TEAM[index].desc}</p>
+          
+          <div className="tc-dots">
+            {TEAM.map((_, i) => (
+              <button 
+                key={i} 
+                className={`tc-dot ${i === index ? "active" : ""}`} 
+                onClick={() => setIndex(i)} 
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );
 }
 
-// ─── TEAM ───────────────────────────────────────────────────────────────────
 const TEAM = [
-  { name: "Sean Morales", role: "Founder", initial: "SM", color: "#4da6ff" },
-  { name: "Sean Morales", role: "Operations Lead", initial: "JM", color: "#00d4b8" },
-  { name: "Sean Morales", role: "Creative Director", initial: "MM", color: "#7B73E4" },
-  { name: "Sean Morales", role: "Project Manager", initial: "JD", color: "#56CFE1" },
+  { name: "Sean Morales", role: "Founder", initial: "SM", color: "#4da6ff", image: meImg, desc: "Founder" },
+  // { name: "Joshua", role: "Operations Lead", initial: "JM", color: "#00d4b8", image: meImg, desc: "Joshua brings order to the chaos. Scaling operations seamlessly across multiple departments." },
+  // { name: "Michael", role: "Creative Director", initial: "MM", color: "#7B73E4", image: meImg, desc: "Crafting beautiful, high-converting interfaces that feel as good as they look." },
+  // { name: "Jessica", role: "Project Manager", initial: "JD", color: "#56CFE1", image: meImg, desc: "Keeping everything on track and ensuring flawless sprint execution every time." },
 ];
 
 // ─── VISION ──────────────────────────────────────────────────────────────────
