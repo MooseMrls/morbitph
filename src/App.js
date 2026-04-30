@@ -13,7 +13,9 @@ import cleverImg from "./images/projects/clev1.png";
 import payrollImg from "./images/projects/swift1.png";
 import ceapImg from "./images/projects/ceapncr1.png";
 import regImg from "./images/projects/reg7.png";
-import weatherImg from "./images/projects/wet.jpeg";
+import posImg from "./images/projects/pos1.png";
+import mapsaWebImg from "./images/projects/mapsaweb1.png";
+import mhdcWebImg from "./images/projects/mhdcweb1.png";
 
 // Logo Images
 import logoDuciel from "./images/logo/Duciel.jpg";
@@ -23,8 +25,7 @@ import logoClev from "./images/logo/Clev.3.png";
 import logoSwift from "./images/logo/swift.png";
 import logoCeap from "./images/logo/CEAPNCR LOGO.png";
 import logoMhdc from "./images/logo/mhdc.jpg";
-import logoWeather from "./images/logo/weather.jpg";
-import meImg from "./images/me.jpg";
+// import meImg from "./images/me.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,14 +40,16 @@ const PROJECTS = [
   { id: 7, title: "Payroll & Leave System", tag: "Finance / HR", desc: "Simplified payroll processing and leave management web app.", tech: ["React", "Express", "Node.js", "MongoDB"], bg: "#1e0610", accent: "#FF4D6D", image: payrollImg },
   { id: 8, title: "CEAP NCR", tag: "Informational", desc: "Informative website for the Catholic Educational Association.", tech: ["React", "Node.js", "MongoDB"], bg: "#060e1e", accent: "#4361EE", image: ceapImg },
   { id: 9, title: "MaPSA Online Registration", tag: "Portal", desc: "Streamlined registration portal for school association operations.", tech: ["React", "Express", "MongoDB"], bg: "#061018", accent: "#3A86FF", image: regImg },
-  { id: 10, title: "Weather Mobile App", tag: "Mobile", desc: "Real-time weather app with hourly forecasts via OpenMeteo API.", tech: ["React Native", "OpenMeteo API"], bg: "#06161e", accent: "#56CFE1", image: weatherImg },
+  { id: 10, title: "MaPSA Website", tag: "Informational", desc: "Designed an informative Website for the Manila Ecclesiastical Province School Systems Association.", tech: ["React", "Node.js", "MongoDB"], bg: "#1a0e2e", accent: "#845EC2", image: mapsaWebImg },
+  { id: 11, title: "MaPSA Holistic Development Center", tag: "Informational", desc: "Designed an informative Website for the MaPSA Holistic Development Center.", tech: ["React", "Express", "MongoDB"], bg: "#1e0e06", accent: "#FF6B35", image: mhdcWebImg },
+  { id: 12, title: "POS System", tag: "POS / Retail", desc: "Full-featured Point-of-Sale system for restaurants, coffee shops, and food businesses — with order management, inventory tracking, and sales reporting.", tech: ["React", "Express", "Node.js", "MongoDB"], bg: "#0a1a0a", accent: "#22C55E", image: posImg },
 ];
 
 const CLIENTS = [
   { name: "Du Ciel Fragrance", logo: logoDuciel, color: "#c8a97e" },
   { name: "Aquamom", logo: logoAM, color: "#4CC9F0" },
-  { name: "MaPSA", logo: logoMapsa, color: "#845EC2" },
-  { name: "National University", logo: logoWeather, color: "#00C9A7" },
+  // { name: "MaPSA", logo: logoMapsa, color: "#845EC2" },
+  { name: "National University", logo: logoMapsa, color: "#00C9A7" },
   { name: "Cleverly", logo: logoClev, color: "#F9C74F" },
   { name: "Swift", logo: logoSwift, color: "#FF4D6D" },
   { name: "CEAP NCR", logo: logoCeap, color: "#4361EE" },
@@ -63,6 +66,30 @@ const SERVICES = [
   { label: "E-Commerce & Online Stores", desc: "Launch fully functional e-commerce stores with product management, order tracking, and upsell tools.", accent: "#FF6B35", icon: "⊕", video: "https://cdn.pixabay.com/video/2020/06/27/43304-435970695_large.mp4" },
 ];
 
+const TESTIMONIALS = [
+  {
+    id: 1,
+    name: "",
+    role: "Executive Director, MAPSA",
+    content: "Morbit transformed our digital presence. The custom registration portal they built handled thousands of applicants without a single glitch. Their attention to detail is unmatched.",
+    accent: "#4361EE"
+  },
+  {
+    id: 2,
+    name: "",
+    role: "Operations Manager, Aquamom",
+    content: "The management system Morbit developed has saved us 20+ hours a week in manual data entry. It's intuitive, fast, and exactly what our business needed to scale.",
+    accent: "#4CC9F0"
+  },
+  {
+    id: 3,
+    name: "",
+    role: "Founder, Du Ciel Fragrance",
+    content: "Working with Sean and his team was the best decision for my brand. They didn't just build a website; they built an experience that our customers love.",
+    accent: "#c8a97e"
+  }
+];
+
 const PROCESS_DATA = [
   { step: "01", label: "Data Gathering", desc: "Start with your project", icon: <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M12 5v14" /></svg> },
   { step: "02", label: "Planning", desc: "Map out your journey", icon: <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.9 1.2 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></svg> },
@@ -72,7 +99,7 @@ const PROCESS_DATA = [
 ];
 
 // ─── LOGO SVG ─────────────────────────────────────────────────────────────────
-function LogoMark({ size = 28, strokeColor = "#fff", dotColor = "#4da6ff" }) {
+function LogoMark({ size = 28, strokeColor = "#fff", dotColor = "#453c9f" }) {
   return (
     <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="50" cy="50" r="44" stroke={strokeColor} strokeWidth="6" fill="none" />
@@ -165,7 +192,7 @@ function Nav({ onGetStarted }) {
   return (
     <nav className={`nav ${scrolled ? "nav--scrolled" : ""}`}>
       <div className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-        <LogoMark size={32} strokeColor="#fff" dotColor="#4da6ff" />
+        <LogoMark size={32} strokeColor="#fff" dotColor="#453c9f" />
         MORBIT
       </div>
 
@@ -520,14 +547,6 @@ function Clients() {
           <span className="s-label">Partner Network</span>
           <h2 className="s-title">Trusted By<br /><em>Builders & Brands</em></h2>
         </div>
-        {/* <div className="stats-row">
-          {[["8","+","Clients"],["10","+","Projects"],["3","+","Years"],["100","%","Satisfaction"]].map(([v,s,l]) => (
-            <div key={l} className="stat-block">
-              <span className="stat-num" data-target={v} data-suffix={s}>0{s}</span>
-              <span className="stat-lbl">{l}</span>
-            </div>
-          ))}
-        </div> */}
         <div className="clients-marquee-wrap">
           <div className="clients-marquee-track">
             {/* Group 1 */}
@@ -553,77 +572,115 @@ function Clients() {
   );
 }
 
-function Team() {
-  const [index, setIndex] = useState(0);
-
-  const next = () => setIndex((prev) => (prev + 1) % TEAM.length);
-  const prev = () => setIndex((prev) => (prev - 1 + TEAM.length) % TEAM.length);
-
-  const getSlideClass = (i) => {
-    if (i === index) return "active";
-    if (i === index - 1 || (index === 0 && i === TEAM.length - 1)) return "prev";
-    if (i === index + 1 || (index === TEAM.length - 1 && i === 0)) return "next";
-    return "hidden";
-  };
+// ─── TESTIMONIALS ─────────────────────────────────────────────────────────────
+function Testimonials() {
+  useEffect(() => {
+    gsap.fromTo(".testimony-card", { opacity: 0, y: 30 }, {
+      opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power2.out",
+      scrollTrigger: { trigger: ".testimony-grid", start: "top 80%" }
+    });
+  }, []);
 
   return (
-    <section className="section team-section" id="team">
-      <div className="container" style={{ maxWidth: 1200 }}>
-        <div className="section-head center-head" style={{ marginBottom: 40 }}>
-          <span className="s-label" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-            {/* <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> */}
-            THE PEOPLE
-          </span>
-          <h2 className="s-title">The Morbit <em>Team</em></h2>
+    <section className="section testimony-section" id="testimonials">
+      <div className="container">
+        <div className="section-head center-head">
+          <span className="s-label">Success Stories</span>
+          <h2 className="s-title">Trusted by <em>Industry Leaders</em></h2>
+          <p className="s-sub">Don't just take our word for it. Here's what our partners have to say about working with Morbit.</p>
         </div>
-
-        <div className="team-carousel-wrapper">
-          <button className="tc-arrow tc-prev" onClick={prev}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-          </button>
-          
-          <div className="tc-viewport">
-            <div className="tc-track">
-              {TEAM.map((m, i) => (
-                <div key={m.name} className={`tc-slide ${getSlideClass(i)}`}>
-                  <img src={m.image} alt={m.name} className="tc-image" />
+        
+        <div className="testimony-grid">
+          {TESTIMONIALS.map((t) => (
+            <div key={t.id} className="testimony-card" style={{ "--t-accent": t.accent }}>
+              <div className="testimony-quote-icon">"</div>
+              <p className="testimony-content">{t.content}</p>
+              <div className="testimony-footer">
+                <div className="testimony-meta">
+                  <h4 className="testimony-name">{t.name}</h4>
+                  <span className="testimony-role">{t.role}</span>
                 </div>
-              ))}
+              </div>
+              <div className="testimony-card-glow" />
             </div>
-          </div>
-
-          <button className="tc-arrow tc-next" onClick={next}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </button>
+          ))}
         </div>
-
-        <div className="tc-info-section">
-          <h3 className="tc-name">{TEAM[index].name}</h3>
-          <p className="tc-desc">{TEAM[index].desc}</p>
-          
-          <div className="tc-dots">
-            {TEAM.map((_, i) => (
-              <button 
-                key={i} 
-                className={`tc-dot ${i === index ? "active" : ""}`} 
-                onClick={() => setIndex(i)} 
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-
       </div>
     </section>
   );
 }
 
-const TEAM = [
-  { name: "Sean Morales", role: "Founder", initial: "SM", color: "#4da6ff", image: meImg, desc: "Founder" },
-  // { name: "Joshua", role: "Operations Lead", initial: "JM", color: "#00d4b8", image: meImg, desc: "Joshua brings order to the chaos. Scaling operations seamlessly across multiple departments." },
-  // { name: "Michael", role: "Creative Director", initial: "MM", color: "#7B73E4", image: meImg, desc: "Crafting beautiful, high-converting interfaces that feel as good as they look." },
-  // { name: "Jessica", role: "Project Manager", initial: "JD", color: "#56CFE1", image: meImg, desc: "Keeping everything on track and ensuring flawless sprint execution every time." },
-];
+// function Team() {
+//   const [index, setIndex] = useState(0);
+
+//   const next = () => setIndex((prev) => (prev + 1) % TEAM.length);
+//   const prev = () => setIndex((prev) => (prev - 1 + TEAM.length) % TEAM.length);
+
+//   const getSlideClass = (i) => {
+//     if (i === index) return "active";
+//     if (i === index - 1 || (index === 0 && i === TEAM.length - 1)) return "prev";
+//     if (i === index + 1 || (index === TEAM.length - 1 && i === 0)) return "next";
+//     return "hidden";
+//   };
+
+  // return (
+  //   <section className="section team-section" id="team">
+  //     <div className="container" style={{ maxWidth: 1200 }}>
+  //       <div className="section-head center-head" style={{ marginBottom: 40 }}>
+  //         <span className="s-label" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+  //           {/* <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> */}
+  //           THE PEOPLE
+  //         </span>
+  //         <h2 className="s-title">The Morbit <em>Team</em></h2>
+  //       </div>
+
+  //       <div className="team-carousel-wrapper">
+  //         <button className="tc-arrow tc-prev" onClick={prev}>
+  //           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  //         </button>
+          
+  //         <div className="tc-viewport">
+  //           <div className="tc-track">
+  //             {TEAM.map((m, i) => (
+  //               <div key={m.name} className={`tc-slide ${getSlideClass(i)}`}>
+  //                 <img src={m.image} alt={m.name} className="tc-image" />
+  //               </div>
+  //             ))}
+  //           </div>
+  //         </div>
+
+  //         <button className="tc-arrow tc-next" onClick={next}>
+  //           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  //         </button>
+  //       </div>
+
+  //       <div className="tc-info-section">
+  //         <h3 className="tc-name">{TEAM[index].name}</h3>
+  //         <p className="tc-desc">{TEAM[index].desc}</p>
+          
+  //         <div className="tc-dots">
+  //           {TEAM.map((_, i) => (
+  //             <button 
+  //               key={i} 
+  //               className={`tc-dot ${i === index ? "active" : ""}`} 
+  //               onClick={() => setIndex(i)} 
+  //               aria-label={`Go to slide ${i + 1}`}
+  //             />
+  //           ))}
+  //         </div>
+  //       </div>
+
+  //     </div>
+  //   </section>
+  // );
+// }
+
+// const TEAM = [
+//   { name: "Sean Morales", role: "Founder", initial: "SM", color: "#453c9f", image: meImg, desc: "Founder" },
+//   // { name: "Joshua", role: "Operations Lead", initial: "JM", color: "#00d4b8", image: meImg, desc: "Joshua brings order to the chaos. Scaling operations seamlessly across multiple departments." },
+//   // { name: "Michael", role: "Creative Director", initial: "MM", color: "#7B73E4", image: meImg, desc: "Crafting beautiful, high-converting interfaces that feel as good as they look." },
+//   // { name: "Jessica", role: "Project Manager", initial: "JD", color: "#56CFE1", image: meImg, desc: "Keeping everything on track and ensuring flawless sprint execution every time." },
+// ];
 
 // ─── VISION ──────────────────────────────────────────────────────────────────
 function Vision() {
@@ -836,7 +893,7 @@ function Footer() {
       <div className="footer-inner-top">
         <div className="footer-brand-side">
           <div className="footer-logo-container">
-            <LogoMark size={60} strokeColor="#fff" dotColor="#4da6ff" />
+            <LogoMark size={60} strokeColor="#fff" dotColor="#453c9f" />
             <span className="footer-brand-title">MORBIT</span>
           </div>
         </div>
@@ -908,7 +965,7 @@ function GetStartedPage({ onBack }) {
     <div className="gs-page">
       <nav className="nav" style={{ background: "transparent", backdropFilter: "none", borderBottom: "none", boxShadow: "none" }}>
         <div className="nav-logo" onClick={onBack} style={{ cursor: "pointer" }}>
-          <LogoMark size={32} strokeColor="#fff" dotColor="#4da6ff" />
+          <LogoMark size={32} strokeColor="#fff" dotColor="#453c9f" />
           MORBIT
         </div>
         {/* <button className="nav-cta-pill" onClick={onBack} style={{ display: "flex", alignItems: "center", gap: "6px" }}>
@@ -1087,7 +1144,8 @@ export default function App() {
       <Services />
       <Process onGetStarted={openForm} />
       <Clients />
-      <Team />
+      <Testimonials />
+      {/* <Team /> */}
       <About />
       <div className="cta-footer-wrap">
         <CtaBanner onGetStarted={openForm} />
