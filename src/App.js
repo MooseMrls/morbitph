@@ -145,7 +145,7 @@ const NAV_LINKS = [
   { id: "services", label: "Services" },
   { id: "process",  label: "Process"  },
   { id: "clients",  label: "Clients"  },
-  { id: "team",     label: "Team"     },
+  // { id: "team",     label: "Team"     },
   { id: "about",    label: "About"    },
 ];
 
