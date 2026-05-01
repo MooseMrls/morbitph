@@ -99,7 +99,7 @@ const PROCESS_DATA = [
 ];
 
 // ─── LOGO SVG ─────────────────────────────────────────────────────────────────
-function LogoMark({ size = 28, strokeColor = "#fff", dotColor = "#453c9f" }) {
+function LogoMark({ size = 28, strokeColor = "#fff", dotColor = "#4138a0" }) {
   return (
     <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="50" cy="50" r="44" stroke={strokeColor} strokeWidth="6" fill="none" />
@@ -128,9 +128,9 @@ function VideoMockup({ src, accent = "#7B73E4" }) {
           loop
           muted
           playsInline
-          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: 0.85 }}
+          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: 0.9 }}
         />
-        <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(135deg, ${accent}11, transparent)`, pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', inset: 0, background: `rgba(65, 56, 160, 0.05)`, pointerEvents: 'none' }} />
       </div>
     </div>
   );
@@ -140,19 +140,19 @@ function VideoMockup({ src, accent = "#7B73E4" }) {
 
 // ─── NAV ─────────────────────────────────────────────────────────────────────
 const NAV_LINKS = [
-  { id: "vision",   label: "Vision"   },
-  { id: "work",     label: "Work"     },
+  { id: "vision", label: "Vision" },
+  { id: "work", label: "Work" },
   { id: "services", label: "Services" },
-  { id: "process",  label: "Process"  },
-  { id: "clients",  label: "Clients"  },
+  { id: "process", label: "Process" },
+  { id: "clients", label: "Clients" },
   // { id: "team",     label: "Team"     },
-  { id: "about",    label: "About"    },
+  { id: "about", label: "About" },
 ];
 
 function Nav({ onGetStarted }) {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen]         = useState(false);
-  const [active, setActive]     = useState("");
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 50);
@@ -192,7 +192,7 @@ function Nav({ onGetStarted }) {
   return (
     <nav className={`nav ${scrolled ? "nav--scrolled" : ""}`}>
       <div className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-        <LogoMark size={32} strokeColor="#fff" dotColor="#453c9f" />
+        <LogoMark size={32} strokeColor="#fff" dotColor="#4138a0" />
         MORBIT
       </div>
 
@@ -241,13 +241,11 @@ function Hero({ onGetStarted }) {
       <div className="container centered">
         <div className="hero-content">
           <h1 ref={titleRef} className="hero-title centered">
-            Custom Software<br />
-            That Powers<br />
-            <span className="hero-gradient">Real Business Growth</span>
+             Automate Your Operations.<br />
+            <span className="hero-gradient">Multiply Your Results.</span>
           </h1>
           <p ref={subRef} className="hero-sub centered">
-            We build custom software, management systems, and high-performance apps
-            tailored for businesses.
+            We help businesses automate processes, reduce manual work, and scale faster with custom-built systems.
           </p>
           <div ref={btnsRef} className="hero-actions centered">
             <button className="btn-primary btn-lg" onClick={onGetStarted}>
@@ -589,7 +587,7 @@ function Testimonials() {
           <h2 className="s-title">Trusted by <em>Industry Leaders</em></h2>
           <p className="s-sub">Don't just take our word for it. Here's what our partners have to say about working with Morbit.</p>
         </div>
-        
+
         <div className="testimony-grid">
           {TESTIMONIALS.map((t) => (
             <div key={t.id} className="testimony-card" style={{ "--t-accent": t.accent }}>
@@ -623,56 +621,56 @@ function Testimonials() {
 //     return "hidden";
 //   };
 
-  // return (
-  //   <section className="section team-section" id="team">
-  //     <div className="container" style={{ maxWidth: 1200 }}>
-  //       <div className="section-head center-head" style={{ marginBottom: 40 }}>
-  //         <span className="s-label" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-  //           {/* <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> */}
-  //           THE PEOPLE
-  //         </span>
-  //         <h2 className="s-title">The Morbit <em>Team</em></h2>
-  //       </div>
+// return (
+//   <section className="section team-section" id="team">
+//     <div className="container" style={{ maxWidth: 1200 }}>
+//       <div className="section-head center-head" style={{ marginBottom: 40 }}>
+//         <span className="s-label" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+//           {/* <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> */}
+//           THE PEOPLE
+//         </span>
+//         <h2 className="s-title">The Morbit <em>Team</em></h2>
+//       </div>
 
-  //       <div className="team-carousel-wrapper">
-  //         <button className="tc-arrow tc-prev" onClick={prev}>
-  //           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-  //         </button>
-          
-  //         <div className="tc-viewport">
-  //           <div className="tc-track">
-  //             {TEAM.map((m, i) => (
-  //               <div key={m.name} className={`tc-slide ${getSlideClass(i)}`}>
-  //                 <img src={m.image} alt={m.name} className="tc-image" />
-  //               </div>
-  //             ))}
-  //           </div>
-  //         </div>
+//       <div className="team-carousel-wrapper">
+//         <button className="tc-arrow tc-prev" onClick={prev}>
+//           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+//         </button>
 
-  //         <button className="tc-arrow tc-next" onClick={next}>
-  //           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-  //         </button>
-  //       </div>
+//         <div className="tc-viewport">
+//           <div className="tc-track">
+//             {TEAM.map((m, i) => (
+//               <div key={m.name} className={`tc-slide ${getSlideClass(i)}`}>
+//                 <img src={m.image} alt={m.name} className="tc-image" />
+//               </div>
+//             ))}
+//           </div>
+//         </div>
 
-  //       <div className="tc-info-section">
-  //         <h3 className="tc-name">{TEAM[index].name}</h3>
-  //         <p className="tc-desc">{TEAM[index].desc}</p>
-          
-  //         <div className="tc-dots">
-  //           {TEAM.map((_, i) => (
-  //             <button 
-  //               key={i} 
-  //               className={`tc-dot ${i === index ? "active" : ""}`} 
-  //               onClick={() => setIndex(i)} 
-  //               aria-label={`Go to slide ${i + 1}`}
-  //             />
-  //           ))}
-  //         </div>
-  //       </div>
+//         <button className="tc-arrow tc-next" onClick={next}>
+//           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+//         </button>
+//       </div>
 
-  //     </div>
-  //   </section>
-  // );
+//       <div className="tc-info-section">
+//         <h3 className="tc-name">{TEAM[index].name}</h3>
+//         <p className="tc-desc">{TEAM[index].desc}</p>
+
+//         <div className="tc-dots">
+//           {TEAM.map((_, i) => (
+//             <button 
+//               key={i} 
+//               className={`tc-dot ${i === index ? "active" : ""}`} 
+//               onClick={() => setIndex(i)} 
+//               aria-label={`Go to slide ${i + 1}`}
+//             />
+//           ))}
+//         </div>
+//       </div>
+
+//     </div>
+//   </section>
+// );
 // }
 
 // const TEAM = [
@@ -697,7 +695,7 @@ function Vision() {
       <div className="container">
         <div className="section-head center-head">
           <span className="s-label">The Vision</span>
-          <h2 className="s-title">Engineering local growth<br /><em>for every business</em></h2>
+          <h2 className="s-title">Engineering Local Growth<br /><em>For Every Business</em></h2>
         </div>
         <div className="vision-bento">
           <div className="vision-item s-1 group">
@@ -893,7 +891,7 @@ function Footer() {
       <div className="footer-inner-top">
         <div className="footer-brand-side">
           <div className="footer-logo-container">
-            <LogoMark size={60} strokeColor="#fff" dotColor="#453c9f" />
+            <LogoMark size={60} strokeColor="#fff" dotColor="#4138a0" />
             <span className="footer-brand-title">MORBIT</span>
           </div>
         </div>
@@ -907,7 +905,7 @@ function Footer() {
           <div className="footer-nav-column">
             <h4 className="footer-column-head">About</h4>
             <button className="footer-nav-link" onClick={() => go("about")}>What is Morbit?</button>
-            <button className="footer-nav-link" onClick={() => go("team")}>Our Team</button>
+            {/* <button className="footer-nav-link" onClick={() => go("team")}>Our Team</button> */}
             <button className="footer-nav-link" onClick={() => go("vision")}>Vision</button>
           </div>
           <div className="footer-nav-column">
@@ -965,7 +963,7 @@ function GetStartedPage({ onBack }) {
     <div className="gs-page">
       <nav className="nav" style={{ background: "transparent", backdropFilter: "none", borderBottom: "none", boxShadow: "none" }}>
         <div className="nav-logo" onClick={onBack} style={{ cursor: "pointer" }}>
-          <LogoMark size={32} strokeColor="#fff" dotColor="#453c9f" />
+          <LogoMark size={32} strokeColor="#fff" dotColor="#4138a0" />
           MORBIT
         </div>
         {/* <button className="nav-cta-pill" onClick={onBack} style={{ display: "flex", alignItems: "center", gap: "6px" }}>
@@ -1110,7 +1108,7 @@ function GetStartedPage({ onBack }) {
                   <div className="gs-actions">
                     <button className="gs-back-btn" onClick={() => setStep(2)}>← Back</button>
                     <button className="btn-primary" onClick={handleSubmit}>
-                      Submit & Book Demo 🚀
+                      Submit
                     </button>
                   </div>
                 </div>
