@@ -26,6 +26,14 @@ import logoSwift from "./images/logo/swift.png";
 import logoCeap from "./images/logo/CEAPNCR LOGO.png";
 import logoMhdc from "./images/logo/mhdc.jpg";
 import morbitLogo from "./images/morbitlogo2.png";
+
+// Fallback Images for Mobile
+import fbCustom from "./images/fallbacks/custom-system.png";
+import fbDashboard from "./images/fallbacks/dashboard-crm.png";
+import fbMobile from "./images/fallbacks/mobile-web-app.png";
+import fbEcommerce from "./images/fallbacks/ecommerce-store.png";
+import fbVisionSystemize from "./images/fallbacks/vision-systemize.png";
+import fbVisionScale from "./images/fallbacks/vision-scale.png";
 // import meImg from "./images/me.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -61,10 +69,10 @@ const CLIENTS = [
 const SKILLS = ["React", "JavaScript", "Node.js", "TypeScript", "HTML/CSS", "Flutter", "Python", "Express.js", "MongoDB", "SQL", "React Native", "OpenMeteo API", "Multimedia Arts", "GitHub", "UI/UX Design"];
 
 const SERVICES = [
-  { label: "Custom System Development", desc: "We build tailored systems from scratch — no templates, no shortcuts. Built around your unique business processes.", accent: "#7B73E4", icon: "⌘", video: "https://cdn.pixabay.com/video/2023/07/21/172655-847860558_large.mp4" },
-  { label: "Admin Dashboards & CRM", desc: "Gain full control over your business with powerful dashboards, customer data analytics, and permission-based access.", accent: "#4CC9F0", icon: "◈", video: "https://cdn.pixabay.com/video/2021/04/05/69999-533348151_large.mp4" },
-  { label: "Mobile & Web App Development", desc: "We design and develop fast, scalable apps for both mobile and web — fully custom, user-friendly, and built to grow.", accent: "#00C9A7", icon: "⊡", video: "https://cdn.pixabay.com/video/2023/07/31/174003-850361299_large.mp4" },
-  { label: "E-Commerce & Online Stores", desc: "Launch fully functional e-commerce stores with product management, order tracking, and upsell tools.", accent: "#FF6B35", icon: "⊕", video: "https://cdn.pixabay.com/video/2020/06/27/43304-435970695_large.mp4" },
+  { label: "Custom System Development", desc: "We build tailored systems from scratch — no templates, no shortcuts. Built around your unique business processes.", accent: "#7B73E4", icon: "⌘", video: "https://cdn.pixabay.com/video/2023/07/21/172655-847860558_large.mp4", fallback: fbCustom },
+  { label: "Admin Dashboards & CRM", desc: "Gain full control over your business with powerful dashboards, customer data analytics, and permission-based access.", accent: "#4CC9F0", icon: "◈", video: "https://cdn.pixabay.com/video/2021/04/05/69999-533348151_large.mp4", fallback: fbDashboard },
+  { label: "Mobile & Web App Development", desc: "We design and develop fast, scalable apps for both mobile and web — fully custom, user-friendly, and built to grow.", accent: "#00C9A7", icon: "⊡", video: "https://cdn.pixabay.com/video/2023/07/31/174003-850361299_large.mp4", fallback: fbMobile },
+  { label: "E-Commerce & Online Stores", desc: "Launch fully functional e-commerce stores with product management, order tracking, and upsell tools.", accent: "#FF6B35", icon: "⊕", video: "https://cdn.pixabay.com/video/2020/06/27/43304-435970695_large.mp4", fallback: fbEcommerce },
 ];
 
 const TESTIMONIALS = [
@@ -103,7 +111,7 @@ const PROCESS_DATA = [
 
 
 // ─── VIDEO MOCKUP ─────────────────────────────────────────────────────────────
-function VideoMockup({ src, accent = "#7B73E4" }) {
+function VideoMockup({ src, fallback, accent = "#7B73E4" }) {
   return (
     <div className="mockup-frame" style={{ borderColor: accent + "44" }}>
       <div className="mockup-topbar" style={{ borderColor: accent + "22", background: "rgba(255,255,255,0.02)" }}>
@@ -111,6 +119,7 @@ function VideoMockup({ src, accent = "#7B73E4" }) {
         <div className="mockup-url-bar" style={{ background: accent + "22" }} />
       </div>
       <div className="mockup-layout" style={{ padding: 0, position: 'relative', background: "#000" }}>
+        <img className="mockup-fallback" src={fallback} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'none' }} />
         <video
           className="mockup-video"
           src={src}
@@ -452,7 +461,7 @@ function Services() {
             <div key={s.label} className="svc-card">
               <span className="svc-number">0{idx + 1}</span>
               <div className="svc-mockup-wrap">
-                <VideoMockup src={s.video} accent={s.accent} />
+                <VideoMockup src={s.video} fallback={s.fallback} accent={s.accent} />
               </div>
               <div className="svc-body">
                 <div className="svc-icon" style={{ background: s.accent + "15", color: s.accent, border: `1px solid ${s.accent}30` }}>
@@ -690,6 +699,7 @@ function Vision() {
         <div className="vision-bento">
           <div className="vision-item s-1 group">
             <div className="vision-bg-video">
+              <img className="vision-fallback" src={fbVisionSystemize} alt="" />
               <video src="https://cdn.pixabay.com/video/2021/04/05/69999-533348151_large.mp4" autoPlay loop muted playsInline />
               <div className="vision-overlay"></div>
             </div>
@@ -717,6 +727,7 @@ function Vision() {
           </div>
           <div className="vision-item s-4 group">
             <div className="vision-bg-video">
+              <img className="vision-fallback" src={fbVisionScale} alt="" />
               <video src="https://cdn.pixabay.com/video/2023/07/21/172655-847860558_large.mp4" autoPlay loop muted playsInline />
               <div className="vision-overlay darker"></div>
             </div>
@@ -980,7 +991,7 @@ function GetStartedPage({ onBack }) {
             <div className="gs-header">
               <span className="s-label">Let's Get Started</span>
               <h1 className="gs-title">Book Your <span className="hero-gradient">Free Demo Call</span></h1>
-              <p className="gs-sub">Fill in the details below and we'll reach out within 24 hours.</p>
+              {/* <p className="gs-sub">Fill in the details below and we'll reach out within 24 hours.</p> */}
             </div>
 
             {/* Step Indicator */}

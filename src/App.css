@@ -2374,7 +2374,8 @@ html {
 .footer-nav-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 72px;
+  gap: 202px;
+  margin-right: 150px; /* Nudge left */
 }
 
 .footer-column-head {
@@ -2661,6 +2662,46 @@ html {
 }
 
 @media (max-width: 768px) {
+  /* Performance Overrides for Mobile */
+  html {
+    background-attachment: scroll !important;
+  }
+
+  .app::before {
+    display: none !important; /* Remove heavy SVG noise filter on mobile */
+  }
+
+  /* Disable expensive backdrop filters on mobile */
+  .nav--scrolled,
+  .nav-menu-pill,
+  .svc-card,
+  .vision-item,
+  .testimony-card,
+  .gs-page .nav,
+  .gs-success,
+  .gs-form-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Disable videos on mobile to save GPU/Bandwidth */
+  .vision-bg-video video,
+  .mockup-video {
+    display: none !important;
+  }
+
+  /* Show fallbacks on mobile */
+  .vision-fallback,
+  .mockup-fallback {
+    display: block !important;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
   .nav {
     padding: 0 24px;
   }
@@ -2814,6 +2855,7 @@ html {
     gap: 40px;
     text-align: center;
     width: 100%;
+    margin-right: 0;
   }
 
   .footer-nav-column {
