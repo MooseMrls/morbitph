@@ -127,6 +127,12 @@ html {
   flex-shrink: 0;
 }
 
+.nav-logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
 .nav-menu-pill {
   display: flex;
   align-items: center;
@@ -2349,6 +2355,12 @@ html {
   display: flex;
   align-items: center;
   gap: 14px;
+}
+
+.footer-logo-img {
+  height: 54px;
+  width: auto;
+  display: block;
 }
 
 .footer-brand-title {

@@ -25,6 +25,7 @@ import logoClev from "./images/logo/Clev.3.png";
 import logoSwift from "./images/logo/swift.png";
 import logoCeap from "./images/logo/CEAPNCR LOGO.png";
 import logoMhdc from "./images/logo/mhdc.jpg";
+import morbitLogo from "./images/morbitlogo2.png";
 // import meImg from "./images/me.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -98,17 +99,6 @@ const PROCESS_DATA = [
   { step: "05", label: "Deployment", desc: "Launch to production", icon: <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" /><line x1="8.59" x2="15.42" y1="13.51" y2="17.49" /><line x1="15.41" x2="8.59" y1="6.51" y2="10.49" /></svg> },
 ];
 
-// ─── LOGO SVG ─────────────────────────────────────────────────────────────────
-function LogoMark({ size = 28, strokeColor = "#fff", dotColor = "#4138a0" }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="44" stroke={strokeColor} strokeWidth="6" fill="none" />
-      <ellipse cx="50" cy="50" rx="44" ry="17" stroke={strokeColor} strokeWidth="4" fill="none" transform="rotate(-18 50 50)" opacity="0.6" />
-      <circle cx="86" cy="37" r="7" fill={dotColor} />
-      <text x="50" y="63" textAnchor="middle" fontFamily="Georgia, serif" fontSize="36" fontWeight="bold" fill={strokeColor}>M</text>
-    </svg>
-  );
-}
 
 
 
@@ -192,7 +182,7 @@ function Nav({ onGetStarted }) {
   return (
     <nav className={`nav ${scrolled ? "nav--scrolled" : ""}`}>
       <div className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-        <LogoMark size={32} strokeColor="#fff" dotColor="#4138a0" />
+        <img src={morbitLogo} alt="Logo" className="nav-logo-img" />
         MORBIT
       </div>
 
@@ -891,7 +881,7 @@ function Footer() {
       <div className="footer-inner-top">
         <div className="footer-brand-side">
           <div className="footer-logo-container">
-            <LogoMark size={60} strokeColor="#fff" dotColor="#4138a0" />
+            <img src={morbitLogo} alt="Logo" className="footer-logo-img" />
             <span className="footer-brand-title">MORBIT</span>
           </div>
         </div>
@@ -963,7 +953,7 @@ function GetStartedPage({ onBack }) {
     <div className="gs-page">
       <nav className="nav" style={{ background: "transparent", backdropFilter: "none", borderBottom: "none", boxShadow: "none" }}>
         <div className="nav-logo" onClick={onBack} style={{ cursor: "pointer" }}>
-          <LogoMark size={32} strokeColor="#fff" dotColor="#4138a0" />
+          <img src={morbitLogo} alt="Logo" className="nav-logo-img" />
           MORBIT
         </div>
         {/* <button className="nav-cta-pill" onClick={onBack} style={{ display: "flex", alignItems: "center", gap: "6px" }}>
