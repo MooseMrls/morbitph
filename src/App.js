@@ -693,7 +693,7 @@ function Vision() {
               <video src="https://cdn.pixabay.com/video/2021/04/05/69999-533348151_large.mp4" autoPlay loop muted playsInline />
               <div className="vision-overlay"></div>
             </div>
-            <h3>Systemize<br />Every Filipino Business</h3>
+            <h3>Systemize<br />Every Business</h3>
             <span className="vision-arrow">→</span>
           </div>
           <div className="vision-item s-2 group">
